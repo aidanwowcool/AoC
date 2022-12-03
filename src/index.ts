@@ -1,4 +1,4 @@
-import {main, main2} from './solutions/q2';
+import {main, main2} from './solutions/q3';
 
 const timeStartP1 = Date.now();
 const resultsP1 = main();
