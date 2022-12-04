@@ -9,11 +9,7 @@ function syncReadFile(filename: string): string[] {
 
 function getNumCode(str: string): number {
     const charToCode = str.charCodeAt(0);
-    if(charToCode >= 96){
-        return charToCode - 96;
-    } else {
-        return charToCode - 38
-    }
+    return charToCode >= 96 ? charToCode - 96 : charToCode - 38;
 }
 
 export function main() {
