@@ -2,11 +2,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 function syncReadFile(filename: string): string {
-    return fs.readFileSync(path.resolve(__dirname, filename), 'utf-8');
+    return fs.readFileSync(path.resolve(process.cwd(), filename), 'utf-8');
 }
 
 function doTheThing(size: number) {
-    const data = syncReadFile('../data/q6.txt');
+    const data = syncReadFile('src/data/q6.txt');
     let currString = data.substring(0,size).split('');
     for(let i = size; i < data.length; i++){
         let numdups = currString.filter((x, i) => 
@@ -23,10 +23,26 @@ function doTheThing(size: number) {
     }
 }
 
+
+function doTheThing2(size: number) {
+    const data = syncReadFile('src/data/q6.txt');
+    let currString = data.substring(0,size).split('');
+    for(let i = size; i < data.length; i++){
+        let set = new Set(currString)
+        if(set.size === size) {
+            return i
+        } else {
+            currString.shift();
+            currString.push(data[i]);
+        }
+    }
+}
+
+
 export function main() {
-    return doTheThing(4);
+    return doTheThing2(4);
 }
 
 export function main2() {
-    return doTheThing(14);
+    return doTheThing2(14);
 }

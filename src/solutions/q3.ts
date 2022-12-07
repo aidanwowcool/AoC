@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 function syncReadFile(filename: string): string[] {
-    const content = fs.readFileSync(path.resolve(__dirname, filename), 'utf-8');
+    const content = fs.readFileSync(path.resolve(process.cwd(), filename), 'utf-8');
     const arr = content.split(/\r\n/);
     return arr;
 }
@@ -13,7 +13,7 @@ function getNumCode(str: string): number {
 }
 
 export function main() {
-    const data = syncReadFile('../data/q3.txt');
+    const data = syncReadFile('src/data/q3.txt');
     const chars = data.map((r) => {
         const len = r.length;
         const r1 = r.substring(0,len/2);
@@ -33,7 +33,7 @@ export function main() {
 
 export function main2() {
     let sum = 0;
-    const data = syncReadFile('../data/q3.txt');
+    const data = syncReadFile('src/data/q3.txt');
     for(let i = 0; i < data.length; i+= 3) {
         const rgx = new RegExp(`(?=[${data[i]}])[${data[i+1]}]`);
         const match = data[i+2].match(rgx);

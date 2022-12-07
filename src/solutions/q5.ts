@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 function syncReadFile(filename: string): string[] {
-    const content = fs.readFileSync(path.resolve(__dirname, filename), 'utf-8');
+    const content = fs.readFileSync(path.resolve(process.cwd(), filename), 'utf-8');
     const arr = content.split(/\r\n/);
     return arr;
 }
@@ -33,7 +33,7 @@ const startingPos2 = [
 ];
 
 export function main() {
-    const data = syncReadFile('../data/q5.txt');
+    const data = syncReadFile('src/data/q5.txt');
     //just get the numbers out of the input
     const dataNums = data.map(str => {
         const regex = new RegExp(/[0-9]+/g);
@@ -52,7 +52,7 @@ export function main() {
 }
 
 export function main2() {
-    const data = syncReadFile('../data/q5.txt');
+    const data = syncReadFile('src/data/q5.txt');
     //just get the numbers out of the input
     const dataNums = data.map(str => {
         const regex = new RegExp(/[0-9]+/g);

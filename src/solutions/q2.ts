@@ -25,17 +25,17 @@ values2.set("C Z", 7);
 
 
 function syncReadFile(filename: string): string[] {
-    const content = fs.readFileSync(path.resolve(__dirname, filename), 'utf-8');
+    const content = fs.readFileSync(path.resolve(process.cwd(), filename), 'utf-8');
     const arr = content.split(/\r\n/);
     return arr;
 }
 
 export function main() {
-    const data = syncReadFile('../data/q2.txt');
+    const data = syncReadFile('src/data/q2.txt');
     return data.reduce((x,y) => x + values.get(y)!, 0);
 }
 
 export function main2() {
-    const data = syncReadFile('../data/q2.txt');
+    const data = syncReadFile('src/data/q2.txt');
     return data.reduce((x,y) => x + values2.get(y)!, 0);
 }
